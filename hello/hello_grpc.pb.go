@@ -19,89 +19,89 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Invoicer_Hello_FullMethodName = "/Invoicer/Hello"
+	HelloMsgService_Hello_FullMethodName = "/HelloMsgService/Hello"
 )
 
-// InvoicerClient is the client API for Invoicer service.
+// HelloMsgServiceClient is the client API for HelloMsgService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type InvoicerClient interface {
+type HelloMsgServiceClient interface {
 	Hello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloResponse, error)
 }
 
-type invoicerClient struct {
+type helloMsgServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewInvoicerClient(cc grpc.ClientConnInterface) InvoicerClient {
-	return &invoicerClient{cc}
+func NewHelloMsgServiceClient(cc grpc.ClientConnInterface) HelloMsgServiceClient {
+	return &helloMsgServiceClient{cc}
 }
 
-func (c *invoicerClient) Hello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloResponse, error) {
+func (c *helloMsgServiceClient) Hello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloResponse, error) {
 	out := new(HelloResponse)
-	err := c.cc.Invoke(ctx, Invoicer_Hello_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, HelloMsgService_Hello_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// InvoicerServer is the server API for Invoicer service.
-// All implementations must embed UnimplementedInvoicerServer
+// HelloMsgServiceServer is the server API for HelloMsgService service.
+// All implementations must embed UnimplementedHelloMsgServiceServer
 // for forward compatibility
-type InvoicerServer interface {
+type HelloMsgServiceServer interface {
 	Hello(context.Context, *HelloRequest) (*HelloResponse, error)
-	mustEmbedUnimplementedInvoicerServer()
+	mustEmbedUnimplementedHelloMsgServiceServer()
 }
 
-// UnimplementedInvoicerServer must be embedded to have forward compatible implementations.
-type UnimplementedInvoicerServer struct {
+// UnimplementedHelloMsgServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedHelloMsgServiceServer struct {
 }
 
-func (UnimplementedInvoicerServer) Hello(context.Context, *HelloRequest) (*HelloResponse, error) {
+func (UnimplementedHelloMsgServiceServer) Hello(context.Context, *HelloRequest) (*HelloResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Hello not implemented")
 }
-func (UnimplementedInvoicerServer) mustEmbedUnimplementedInvoicerServer() {}
+func (UnimplementedHelloMsgServiceServer) mustEmbedUnimplementedHelloMsgServiceServer() {}
 
-// UnsafeInvoicerServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to InvoicerServer will
+// UnsafeHelloMsgServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to HelloMsgServiceServer will
 // result in compilation errors.
-type UnsafeInvoicerServer interface {
-	mustEmbedUnimplementedInvoicerServer()
+type UnsafeHelloMsgServiceServer interface {
+	mustEmbedUnimplementedHelloMsgServiceServer()
 }
 
-func RegisterInvoicerServer(s grpc.ServiceRegistrar, srv InvoicerServer) {
-	s.RegisterService(&Invoicer_ServiceDesc, srv)
+func RegisterHelloMsgServiceServer(s grpc.ServiceRegistrar, srv HelloMsgServiceServer) {
+	s.RegisterService(&HelloMsgService_ServiceDesc, srv)
 }
 
-func _Invoicer_Hello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _HelloMsgService_Hello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(HelloRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InvoicerServer).Hello(ctx, in)
+		return srv.(HelloMsgServiceServer).Hello(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Invoicer_Hello_FullMethodName,
+		FullMethod: HelloMsgService_Hello_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InvoicerServer).Hello(ctx, req.(*HelloRequest))
+		return srv.(HelloMsgServiceServer).Hello(ctx, req.(*HelloRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Invoicer_ServiceDesc is the grpc.ServiceDesc for Invoicer service.
+// HelloMsgService_ServiceDesc is the grpc.ServiceDesc for HelloMsgService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Invoicer_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "Invoicer",
-	HandlerType: (*InvoicerServer)(nil),
+var HelloMsgService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "HelloMsgService",
+	HandlerType: (*HelloMsgServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Hello",
-			Handler:    _Invoicer_Hello_Handler,
+			Handler:    _HelloMsgService_Hello_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

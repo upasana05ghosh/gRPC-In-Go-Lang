@@ -1,13 +1,6 @@
 # gRPC-In-Go-Lang
 Basic gRPC call In Go Lang
 
-</details>
-      <summary> Click me </summary>
-       Steps here
-       <summary> Click nexxt </summary>
-       Steps here
-</details>
-
 1. Create go.mod file
    go mod init github.com/ughosh/grcp-learn
 
@@ -48,15 +41,15 @@ Basic gRPC call In Go Lang
     --go-grpc_opt=paths=source_relative \
     hello.proto
     ```
-6. If error occur, try running
+4. If error occur, try running
     ```
     go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@lates
     ```
-7. The generate file will be showing some error, in case the lib is not present. Do `go mod tidy` after this to clean-up `go.mod` file
+5. The generate file will be showing some error, in case the lib is not present. Do `go mod tidy` after this to clean-up `go.mod` file
     ```
      go get -u google.golang.org/grpc
     ```
-8. If we make any changes in our `hello.proto` file, we have to run command #5. To save our time, we can save the entire command in Makefile. Create a `Makefile` and add the command
+6. If we make any changes in our `hello.proto` file, we have to run command #5. To save our time, we can save the entire command in Makefile. Create a `Makefile` and add the command
    ```
     generate_grpc_code_hello:
 	protoc \
