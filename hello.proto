@@ -1,0 +1,15 @@
+syntax = "proto3";
+option go_package = "github.com/ughosh/grcp-learn/invoicer";
+
+
+message HelloRequest{
+    string name = 1;
+}
+
+message HelloResponse {
+    string msg = 1;
+}
+
+service Invoicer {
+    rpc Hello(HelloRequest) returns (HelloResponse);
+}
