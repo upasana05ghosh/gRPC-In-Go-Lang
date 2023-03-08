@@ -1,6 +1,8 @@
 # gRPC-In-Go-Lang
 Basic gRPC call In Go Lang
 
+## Create proto file
+
 1. Create go.mod file
    go mod init github.com/ughosh/grcp-learn
 
@@ -41,15 +43,15 @@ Basic gRPC call In Go Lang
     --go-grpc_opt=paths=source_relative \
     hello.proto
     ```
-4. If error occur, try running
+ 6. If error occur, try running
     ```
     go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@lates
     ```
-5. The generate file will be showing some error, in case the lib is not present. Do `go mod tidy` after this to clean-up `go.mod` file
+ 7. The generate file will be showing some error, in case the lib is not present. Do `go mod tidy` after this to clean-up `go.mod` file
     ```
      go get -u google.golang.org/grpc
     ```
-6. If we make any changes in our `hello.proto` file, we have to run command #5. To save our time, we can save the entire command in Makefile. Create a `Makefile` and add the command
+ 8. If we make any changes in our `hello.proto` file, we have to run command #5. To save our time, we can save the entire command in Makefile. Create a `Makefile` and add the command
    ```
     generate_grpc_code_hello:
 	protoc \
@@ -59,4 +61,24 @@ Basic gRPC call In Go Lang
     --go-grpc_opt=paths=source_relative \
     hello.proto
    ```
-Now, if we want to do any updates, run `make generate_grpc_code_hello`
+   Now, if we want to do any updates, run `make generate_grpc_code_hello`
+
+## Write gRPC server code
+Add main.go file and run that file using `go run main.go`
+This will start our server which is listening  to port 8080
+
+## How to test our grpc end point
+  To test it, we will be using grpcurl (https://github.com/fullstorydev/grpcurl)
+  Run the command in another terminal
+  ```
+  grpcurl -plaintext -d '{"name": "Test"}' localhost:8080 Hello.Hello
+  ```
+
+  You will output like 
+  ```
+    {
+        "msg": "Hello Test"
+    }
+  ```
+
+Congratulations! You created your first gRPC call in Go lang :tada: 
