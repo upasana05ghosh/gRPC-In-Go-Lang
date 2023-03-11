@@ -1,7 +1,22 @@
 # gRPC-In-Go-Lang
 
+- [gRPC-In-Go-Lang](#grpc-in-go-lang)
+  - [What is gRPC?](#what-is-grpc)
+    - [RPC](#rpc)
+    - [gRPC](#grpc)
+    - [Why it's getting popular?](#why-its-getting-popular)
+    - [Wait, what is HTTP/2 protocol?](#wait-what-is-http2-protocol)
+    - [I heard people are using it instead of REST API.](#i-heard-people-are-using-it-instead-of-rest-api)
+    - [Why not keep using REST?](#why-not-keep-using-rest)
+- [Basic gRPC call In Go Lang](#basic-grpc-call-in-go-lang)
+  - [Create proto file](#create-proto-file)
+  - [Write gRPC server code](#write-grpc-server-code)
+  - [How to test our grpc end point](#how-to-test-our-grpc-end-point)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 ## What is gRPC?
-It's google RPC. 	:sweat_smile:
+It's google RPC. 	:sweat_smile: </br>
 Hey, I know about google. But what is RPC?
 ### RPC
 - It stands for Remote Procedural Call.
@@ -19,7 +34,7 @@ Hey, I know about google. But what is RPC?
 - Fast - It uses HTTP/2 protocol. 
 
 ### Wait, what is HTTP/2 protocol?
-- Well it's HTTP version 2.
+- Well it's HTTP version 2. :facepalm:
 - It's faster than HTTP 1 as it comes with the following features:
   - Enable request and response multiplexing - Servers can send multiple messages in a single request.
   - Header compression
