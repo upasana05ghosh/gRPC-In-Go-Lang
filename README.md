@@ -1,6 +1,48 @@
 # gRPC-In-Go-Lang
-Basic gRPC call In Go Lang
 
+## What is gRPC?
+It's google RPC. 	:sweat_smile:
+Hey, I know about google. But what is RPC?
+### RPC
+- It stands for Remote Procedural Call.
+- It uses a form of function call instead of the popular HTTP calls.
+- It uses IDL(Interface Definition Lang.) as a form of contract.
+
+### gRPC
+- It's a google RPC.
+- It uses HTTP/2 protocol.
+- It uses Protocol Buffer (ProtoBuf) format for sending/receiving messages.
+
+### Why it's getting popular?
+- Easy - It's a simple function call.
+- Support - It is supported in a lot of languages.
+- Fast - It uses HTTP/2 protocol. 
+
+### Wait, what is HTTP/2 protocol?
+- Well it's HTTP version 2.
+- It's faster than HTTP 1 as it comes with the following features:
+  - Enable request and response multiplexing - Servers can send multiple messages in a single request.
+  - Header compression
+  - binary protocol - Send message in 0/1 format instead of text-based format
+- It uses Protocol Buffer (ProtoBuf) as the IDL.
+
+### I heard people are using it instead of REST API.
+- Well REST is an architectural style.
+- It defines protocols to talk between client and server.
+- It uses HTTP/1 protocol.
+- It uses JSON format for sending/receiving messages.
+
+### Why not keep using REST?
+- Well it's simple, easy to use and there are many tools to test it easily.
+- Issues: 
+  - Sometimes the payload becomes huge and it decreases the performance.
+  - It's unary, that is we can send one request at a time.
+  - REST uses HTTP/1 protocol which does three-way handshaking for the first message, making it slower.
+
+Note: It's best to use REST when communicating between browser and back-end. gRPC is best for inter-microservice communication.
+
+
+# Basic gRPC call In Go Lang
 ## Create proto file
 
 1. Create go.mod file
